@@ -8,3 +8,4 @@
 * Consumer
 * Function
 * Predicate
+* Supplier
