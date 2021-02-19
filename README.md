@@ -9,3 +9,4 @@
 * Function
 * Predicate
 * Supplier
+* Iterações com lambda
