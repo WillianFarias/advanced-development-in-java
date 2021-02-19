@@ -7,3 +7,4 @@
 * Funções de alta ordem
 * Consumer
 * Function
+* Predicate
