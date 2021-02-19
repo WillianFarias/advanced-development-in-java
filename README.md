@@ -1,4 +1,9 @@
 # advanced-development-in-java
 
-*paradigma funcional
-*paradigma imperativo
+* Paradigma Funcional no Java
+* Paradigma Imperativo no Java
+* Lamda no Java
+* Recursividade no Java
+* Funções de alta ordem
+* Consumer
+* Function
