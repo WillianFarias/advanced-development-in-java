@@ -2,28 +2,58 @@ package programacaoassincrona;
 
 public class ThreadExemplo {
   public static void main(String[] args) {
-    BarraDeCarregamentoDois barraDeCarregamentoDois = new BarraDeCarregamentoDois();
+    GerarPDF gerarPDF = new GerarPDF();
+    BarraDeCarregamento barraDeCarregamento = new BarraDeCarregamento(gerarPDF);
 
-    barraDeCarregamentoDois.start();
+    gerarPDF.start();
+    barraDeCarregamento.start();
   }
 
 }
 
-class GerarPDF {
+/*class GerarPDF extends Thread {
+  Thread.
+}*/
 
-}
+// class BarraDeCarregamento implements Runnable {
+class BarraDeCarregamento extends Thread {
 
-class BarraDeCarregamento implements Runnable {
+  private Thread iniciarGeradorPDF;
+
+  public BarraDeCarregamento(Thread iniciarGeradorPDF) {
+    this.iniciarGeradorPDF = iniciarGeradorPDF;
+  }
+
   @Override
   public void run() {
-    System.out.println("Loading...");
+    try {
+      Thread.sleep(500);
+
+      while (true) {
+        if (!iniciarGeradorPDF.isAlive()) {
+          break;
+        }
+        System.out.println("Loading...");
+      }
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
   }
 }
 
-class BarraDeCarregamentoDois extends Thread {
-  @Override
-  public void run() {
-    super.run();
-    System.out.println("rodei " + this.getName());
-  }
-}
+// class BarraDeCarregamentoDois implements Runnable {
+/*
+ * class BarraDeCarregamentoDois extends Thread {
+ * 
+ * @Override public void run() { try { Thread.sleep(1000);
+ * System.out.println("Rodei o barramento"); } catch (InterruptedException e) {
+ * e.printStackTrace(); } } }
+ */
+
+/*
+ * class BarraDeCarregamentoDois extends Thread {
+ * 
+ * @Override public void run() { super.run(); try { Thread.sleep(5000);
+ * System.out.println("rodei " + this.getName()); } catch (InterruptedException
+ * e) { e.printStackTrace(); } } }
+ */
