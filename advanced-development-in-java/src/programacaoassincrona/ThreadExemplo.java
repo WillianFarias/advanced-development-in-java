@@ -1,5 +1,8 @@
 package programacaoassincrona;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class ThreadExemplo {
   public static void main(String[] args) {
     GerarPDF gerarPDF = new GerarPDF();
@@ -11,12 +14,18 @@ public class ThreadExemplo {
 
 }
 
-/*class GerarPDF extends Thread {
-  Thread.
-}*/
+class GerarPDF extends Thread {
+
+
+  
+}
 
 // class BarraDeCarregamento implements Runnable {
 class BarraDeCarregamento extends Thread {
+
+  public void teste(){
+    System.out.println("aqui");
+  }
 
   private Thread iniciarGeradorPDF;
 
