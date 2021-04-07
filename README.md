@@ -10,3 +10,4 @@
 * Predicate
 * Supplier
 * Iterações com lambda
+* Executor (programação assincrona)

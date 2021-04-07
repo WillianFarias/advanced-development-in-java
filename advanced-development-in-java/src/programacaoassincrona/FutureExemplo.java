@@ -8,10 +8,13 @@ import java.util.concurrent.Executors;
 
 public class FutureExemplo {
 
-  private static final ExecutorService threadPool = Executors.newFixedThreadPool(3);
+  private static final ExecutorService threadPool = Executors.
+    newFixedThreadPool(3);
   public static void main(String[] args) {
     Casa casa = new Casa(new Quarto());
-    casa .obterAfarezesDaCasa().forEach - threadPool.execute(() -> atividade.realizar());
+    casa.obterAfazeresDeCasa().forEach( atividade -> threadPool.execute(() -> 
+      atividade.realizar()));
+      //necessario para matar a thread main
     threadPool.shutdown();
   }
 }
