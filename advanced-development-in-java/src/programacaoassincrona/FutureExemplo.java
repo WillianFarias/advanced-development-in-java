@@ -8,44 +8,44 @@ import java.util.concurrent.Executors;
 
 public class FutureExemplo {
 
-  private static final ExecutorService threadPool = Executors.newFixedThreadPool(3);
+	private static final ExecutorService threadPool = Executors.newFixedThreadPool(3);
 
-  public static void Main(String[] args) {
+	public static void Main(String[] args) {
     Casa casa = new Casa(new Quarto());
     casa.obterAfazeresDeCasa().forEach( atividade -> threadPool.execute(() -> {
       try {
         atividade.realizar();
       } catch (InterruptedException e) {
         e.printStackTrace();
-      }));
+      };
       //necessario para matar a thread main
     threadPool.shutdown();
-  }
+    }
 }
 
-  class Casa {
-    private List<Comodo> comodos;
+	class Casa {
+		private List<Comodo> comodos;
 
-    Casa(Comodo... comodos) {
-      this.comodos = Arrays.asList(comodos);
-    }
+		Casa(Comodo... comodos) {
+			this.comodos = Arrays.asList(comodos);
+		}
 
-    List<Atividade> obterAfazeresDeCasa() {
-      return this.comodos.stream().map(Comodo::obterAfazeresDoComodo).reduce(new ArrayList<Atividade>(),
-          (pivo, atividade) -> {
-            pivo.addAll(atividade);
-            return pivo;
-          });
-    }
-  }
+		List<Atividade> obterAfazeresDeCasa() {
+			return this.comodos.stream().map(Comodo::obterAfazeresDoComodo).reduce(new ArrayList<Atividade>(),
+					(pivo, atividade) -> {
+						pivo.addAll(atividade);
+						return pivo;
+					});
+		}
+	}
 
-  interface Atividade {
-    void realizar() throws InterruptedException;
-  }
+	interface Atividade {
+		void realizar() throws InterruptedException;
+	}
 
-  abstract class Comodo {
-    abstract List<Atividade> obterAfazeresDoComodo();
-  }
+	abstract class Comodo {
+		abstract List<Atividade> obterAfazeresDoComodo();
+	}
 
 class Quarto extends Comodo {
 
