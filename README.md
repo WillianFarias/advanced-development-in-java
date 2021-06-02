@@ -12,3 +12,6 @@
 * Iterações com lambda
 * Executor (programação assincrona)
 * Parallel Streams
+* Java 10 
+  * Inferência de tipos variáveis locais
+  
